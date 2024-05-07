@@ -1,0 +1,658 @@
+/* Reset browser defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom Font */
+@font-face {
+    font-family: 'Reey';
+    src: url('./assets/fonts/Reey/Reey-Regular.woff2');
+}
+
+/* Page Body */
+
+body {
+    /* Position */
+    position: relative;
+
+    /* Display Mode */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    /* Box Model */
+    margin: 0;
+    border: none;
+    padding: 0;
+    min-height: 100vh; /* Makes sure the body takes at least the full height of the viewport */
+    max-height: none;
+
+    /* Background */
+    background-image: url('./assets/images/background-pattern.png'); 
+    background-size: 100%;
+    background-attachment: scroll;
+    background-repeat: repeat-y;
+
+    /* Colors */
+    background-color: white;
+
+    /* Font */
+    font-family: "Inter Tight", sans-serif;
+    letter-spacing: 1px;
+    
+    /* Other */
+    overflow-x: hidden;   
+}
+
+/* Navigation Bar */
+
+#main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    min-width: 100vw;
+    height: 5rem;
+}
+
+#nav-menu {
+    display: flex;
+    justify-content: center;
+    width: 75vw;
+    gap: 5rem;
+}
+
+nav ul li {
+    font-size: 16px;
+    list-style: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-link:visited {
+    color: white;
+}
+
+.nav-link:hover {
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out 0.2s;
+}
+
+.nav-link.current {
+    color: #8B9E3B;
+    font-weight: 700;
+}
+
+/* Page Content */
+
+/* Masked Texture Image */
+
+.texture {
+    width: 100vw; /* The image will fill the container*/
+    height: auto; /* Maintains aspect ratio */
+    filter: grayscale(100%) brightness(20%) contrast(100%); 
+
+    /* Chrome Compatibility -- Chrome was not rendering it till I added -webkit- prefix */
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg width="1440" height="977" viewBox="0 0 1440 977" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V257C1440 654.645 1117.65 977 720 977V977C322.355 977 0 654.645 0 257V0Z" fill="white"/></svg>');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: top;
+    
+    /* Firefox Compatibility */
+    -moz-mask-image: url('data:image/svg+xml;utf8,<svg width="1440" height="977" viewBox="0 0 1440 977" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V257C1440 654.645 1117.65 977 720 977V977C322.355 977 0 654.645 0 257V0Z" fill="white"/></svg>');
+    -moz-mask-size: contain;
+    -moz-mask-repeat: no-repeat;
+    -moz-mask-position: top;
+
+    /* Default */
+    mask-image: url('data:image/svg+xml;utf8,<svg width="1440" height="977" viewBox="0 0 1440 977" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V257C1440 654.645 1117.65 977 720 977V977C322.355 977 0 654.645 0 257V0Z" fill="white"/></svg>');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: top;
+}
+
+
+/* Hero Section */
+
+#hero-section {
+    position: absolute;
+    top: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Hero Section - Icon */
+
+.icon {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+#sweets-icon {
+    transform: scale(2); /* Alters the size of an element on the webpage -- Other ways of resizing were not working for the SVGs */
+    stroke: white; /* The icons are outlined, so the color needs to be selected for the stroke, not the fill */
+}
+
+/* Hero Section - Intro */
+
+.introduction {
+    z-index: 3;
+    top: 50%;
+    transform: translateY(70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 100vw;
+}
+
+.display-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #8B9E3B;
+    font-size: 70px;
+    font-family: 'Reey', Arial, sans-serif;
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+.introduction p {
+    margin-top: 0; 
+    max-width: 70%;
+    color: white;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.graphic-element {
+    z-index: 5;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.highlighted {
+    z-index: 50;
+    position: absolute;
+    transform: translateY(150px);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 5%;
+    width: 45%;
+    filter: drop-shadow(10px 50px 20px #00000045);
+}
+
+#gelato {
+    animation: spin 100s infinite linear; 
+}
+
+/* Secondary Section - Dish 1 */
+
+.dish-1 {
+    transform: translateY(400px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.cannoli-picture {
+    transform: translateX(0px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 35%;
+    margin-left: 70px;
+}
+
+#cannoli {
+    filter: drop-shadow(10px 50px 20px #00000045);
+}
+
+.description-1 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 20%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.description-1 h2 {
+    color: #424040;
+    font-size: 60px;
+    font-family: 'Reey', Arial, sans-serif;
+    font-weight: 100;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.description-1 p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    color: #424040;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 2;
+    text-align: left;
+}
+
+/* Secondary Section - Dish 2 */
+
+.dish-2 {
+    transform: translateY(400px);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.sfogliatelle-picture {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    margin-right: 70px;
+    text-align: center;
+}
+
+#sfogliatelle {
+    filter: drop-shadow(10px 50px 20px #00000045);
+}
+
+.description-2 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 20%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.description-2 h2 {
+    color: #424040;
+    font-size: 60px;
+    font-family: 'Reey', Arial, sans-serif;
+    font-weight: 100;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.description-2 p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    color: #424040;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 2;
+    text-align: left;
+}
+
+/* Secondary Section - Dish 3 */
+
+.dish-3 {
+    transform: translateY(400px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+.struffoli-picture {
+    transform: translateX(0px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 35%;
+    margin-left: 70px;
+}
+
+#struffoli {
+    filter: drop-shadow(10px 50px 20px #00000045);
+}
+
+.description-3 {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 20%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.description-3 h2 {
+    color: #424040;
+    font-size: 60px;
+    font-family: 'Reey', Arial, sans-serif;
+    font-weight: 100;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.description-3 p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    color: #424040;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 2;
+    text-align: left;
+}
+
+/* Footer */
+
+.footer {
+    transform: translateY(400px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 50px;
+    background-color: #252525;
+    color: gray;
+    font-size: 10px;
+    text-transform: uppercase;
+
+}
+
+.footer p {
+    color: white;
+}
+
+.fa-utensils {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Media Queries */
+
+@media all and (max-width: 921px){
+
+    /* Hero Section - Intro */
+
+    .introduction p {
+        margin-bottom: 20%;
+    }
+
+    #pasta-icon{
+        transform: scale(1.5);
+    }
+
+    .display-title {
+        font-size: 60px;
+    }
+
+    .highlighted {
+        transform: translateY(260px);
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    }
+
+    /* Secondary Section - Dish 1 */
+
+    .dish-1 {
+        transform: translateY(300px);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        margin-top: 50px;
+    }
+    
+    .cannoli-picture {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        margin: 0;
+        width: 45%;
+    }
+    
+    .description-1 {
+        flex: 1;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 80vw;
+        margin-left: 4%;
+        margin-right: 4%;
+
+    }
+    
+    .description-1 h2 {
+        font-size: 40px;
+        font-weight: 100;
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    .description-1 p {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    /* Secondary Section - Dish 2 */
+
+    .dish-2 {
+        transform: translateY(400px);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        margin-top: 50px;
+    }
+    
+    .sfogliatelle-picture {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        margin: 0;
+        width: 45%;
+    }
+    
+    .description-2 {
+        flex: 1;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 80vw;
+        margin-left: 4%;
+        margin-right: 4%;
+
+    }
+    
+    .description-2 h2 {
+        font-size: 40px;
+        font-weight: 100;
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    .description-2 p {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #424040;
+        font-size: 16px;
+        font-weight: 100;
+        line-height: 2;
+        text-align: left;
+    }
+
+    /* Secondary Section - Dish 3 */
+
+    .dish-3 {
+        transform: translateY(500px);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        margin-top: 50px;
+        margin-bottom: 10%;
+    }
+    
+    .struffoli-picture {
+        display: flex;
+        align-items: center;
+        align-self: center;
+        margin: 0;
+        width: 45%;
+    }
+    
+    
+    .description-3 {
+        flex: 1;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 80vw;
+        margin-left: 4%;
+        margin-right: 4%;
+
+    }
+    
+    .description-3 h2 {
+        font-size: 40px;
+        font-weight: 100;
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    .description-3 p {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #424040;
+        font-size: 16px;
+        font-weight: 100;
+        line-height: 2;
+        text-align: left;
+    }
+
+    /* Masked Texture -- Changed the SVG mask path to another one for a better responsive design */
+
+    .texture {
+        -webkit-mask-image: url('data:image/svg+xml;utf8,<svg width="1440" height="1303" viewBox="0 0 1440 1303" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V583C1440 980.645 1117.65 1303 720 1303C322.355 1303 0 980.645 0 583V0Z" fill="white"/></svg>');
+        -moz-mask-image:  url('data:image/svg+xml;utf8,<svg width="1440" height="1303" viewBox="0 0 1440 1303" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V583C1440 980.645 1117.65 1303 720 1303C322.355 1303 0 980.645 0 583V0Z" fill="white"/></svg>');
+        mask-image:  url('data:image/svg+xml;utf8,<svg width="1440" height="1303" viewBox="0 0 1440 1303" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V583C1440 980.645 1117.65 1303 720 1303C322.355 1303 0 980.645 0 583V0Z" fill="white"/></svg>');
+        -webkit-mask-size: cover;
+        min-height: 900px;
+    }
+
+}
+
+
+@media all and (max-width: 800px){
+
+    .dish-1 {
+        transform: translateY(200px);
+    }
+
+    .dish-2 {
+        transform: translateY(300px); 
+    }
+
+    .dish-3 {
+        transform: translateY(400px); 
+    }
+
+}
+
+
+@media all and (max-width: 542px){
+
+    .texture {
+        transform: translateY(-100px);
+    }
+
+    #nav-menu {
+        width: 75vw;
+        gap: 12%;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .display-title {
+        font-size: 40px;
+    }
+
+    .dish-1 {
+        transform: translateY(100px);
+    }
+
+    .dish-2 {
+        transform: translateY(200px); 
+    }
+
+    .dish-3 {
+        transform: translateY(300px); 
+        margin-bottom: 2%;
+    }
+
+    .footer {
+        margin-top: 2%;
+    }
+
+}
+
+
+
+/* Keyframes for the animations */
+
+@-webkit-keyframes spin {
+    100%{-webkit-transform: rotate(360deg);
+    }
+}
